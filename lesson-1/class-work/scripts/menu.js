@@ -1,6 +1,3 @@
-/**
- * Created by igor on 3/23/16.
- */
 var menuList = [
     { title: 'Животные', items: ['Кошки', 'Собаки'] },
     { title: 'Рыбы', items: ['Акула', 'Клоун'] }

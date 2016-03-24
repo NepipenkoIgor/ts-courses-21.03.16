@@ -1,28 +1,3 @@
-/**
- * Created by igor on 3/23/16.
- */
-
-// let say = 'a bird > two cat';
-// let html = htmlEscape`<div> hellow ${say}</div>`;
-//
-// function htmlEscape(literals, ...placeholders) {
-//     let result = '';
-//     for (let i = 0; i < placeholders.length; i++) {
-//         result += literals[i];
-//         result += placeholders[i]
-//             .replace('/&/g', '&amp;')
-//             .replace('/</g', '&lt')
-//     }
-//     result += literals[literals.length - 1]
-//     return result;
-//
-// interface I {
-//     readonly x:number;
-//     readonly y:string;
-// }
-//
-// let i:I = {x: 1, y: 1}
-
 type menuList ={title:string,items:string[]}[]
 
 let menuList:menuList = [
