@@ -35,7 +35,7 @@ let menu: MenuItem[] = [
 function generateMenu(menu: MenuItem[]): string {
 	let menuTree = `<ul>`;
 	for (let branch of menu) {
-		menuTree += ("items" in branch) ? `<li><a class="title">${branch.title}</a>` : `<li><a>${branch.title}</a>`;
+		menuTree += ("items" in branch) ? `<li><a class="title">${branch.title}</a>` : `<li><a>${branch.title}</a></li>`;
 		if ("items" in branch) {
 			let subMenu: MenuItem[] = branch.items;
 			menuTree += generateMenu(subMenu);
@@ -50,12 +50,12 @@ function generateMenu(menu: MenuItem[]): string {
 function createMenu(): void {
 	let navMenuElement: HTMLElement = <HTMLElement>document.querySelector("nav");
 	navMenuElement.innerHTML = generateMenu(menu);
-
+	console.log(generateMenu(menu));
 	navMenuElement.onclick = (ev: MouseEvent)=> {
 		let el = ev.target as HTMLElement;
 		let classList = el.classList;
 		if (classList.contains('title')) {
-			let parentLi = el.parentNode as HTMLElement;
+			let parentLi = <HTMLElement>el.parentNode;
 			parentLi.classList.toggle("menu-open");
 		}
 	};
