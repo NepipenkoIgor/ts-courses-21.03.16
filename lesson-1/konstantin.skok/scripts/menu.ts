@@ -1,8 +1,8 @@
 
 
-type bigList = {title: string, items? : bigList[]}
+type bigList = {title: string, items? : bigList}[];
 
-let menu: bigList[] = [
+let menu: bigList = [
   {
     title: 'Животные', items: [
     {
@@ -42,7 +42,7 @@ let menu: bigList[] = [
 
 
 
-function generateMenu(list: bigList[]):string{
+function generateMenu(list: bigList):string{
   //let str = `<ul>`;
   let str = '';
   for (let menu of list) {
