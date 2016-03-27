@@ -35,7 +35,7 @@ function generateMenu(list:menuList):string {
 }
 
 function generateItem(item:menuItem):string {
-    let itemClass = "last-item";
+    let itemClass:string = "last-item";
     let str:string = "";
     if (item.items && item.items.length) {
         str += `<ul>`;
@@ -60,6 +60,10 @@ navMenuList.onclick = (e:MouseEvent)=> {
         parentLi.classList.toggle('menu-open')
     }
     if (classList.contains('last-item')) {
+        let lastSelected:HTMLElement = document.querySelector('.last-item.selected') as HTMLElement;
+        if(lastSelected !== null) {
+            lastSelected.classList.remove('selected');
+        }
         el.classList.toggle('selected');
     }
 };

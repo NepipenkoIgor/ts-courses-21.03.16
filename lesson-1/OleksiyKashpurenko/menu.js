@@ -54,6 +54,10 @@ navMenuList.onclick = function (e) {
         parentLi.classList.toggle('menu-open');
     }
     if (classList.contains('last-item')) {
+        var lastSelected = document.querySelector('.last-item.selected');
+        if (lastSelected !== null) {
+            lastSelected.classList.remove('selected');
+        }
         el.classList.toggle('selected');
     }
 };
