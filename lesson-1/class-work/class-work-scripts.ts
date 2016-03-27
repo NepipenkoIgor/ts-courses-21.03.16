@@ -49,3 +49,16 @@ interface ImmutablePoint {
 }
 var pt: ImmutablePoint = { x: 4, y: 5 };
 pt.x = 5; // не может поменять свойство
+
+
+/**Function**/
+
+function fooF(config:{
+    readonly bar: number,
+    readonly bas: number
+}) {
+    config.bar=45;
+}
+
+let config = {bar:123,bas:123};
+fooF(config);
