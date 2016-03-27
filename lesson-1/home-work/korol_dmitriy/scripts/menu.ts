@@ -1,4 +1,4 @@
-let menu: Array<MenuItem> = [
+let menu:Array<MenuItem> = [
     {
         title: 'Животные',
         items: [
@@ -38,6 +38,10 @@ let menu: Array<MenuItem> = [
                 ]
             },
         ]
+    },
+    {
+        title: 'Другое (проверка на пустое "items")',
+        items: []
     }
 ];
 
@@ -45,11 +49,11 @@ initMenu(menu);
 
 
 interface MenuItem {
-    title: string,
-    items?: Array<MenuItem>
+    title:string,
+    items?:Array<MenuItem>
 }
 
-function initMenu (menu: Array<MenuItem>):void {
+function initMenu(menu:Array<MenuItem>):void {
     let menuStr = "";
     menuStr += generateMenu(menu);
 
@@ -59,17 +63,17 @@ function initMenu (menu: Array<MenuItem>):void {
     //add click on menuItem
     mainMenu.addEventListener("click", (event:MouseEvent) => {
         let element = event.target as HTMLElement;
-        if(element.classList.contains('title')) {
+        if (element.classList.contains('title')) {
             let parentElement = element.parentNode as HTMLElement;
             parentElement.classList.toggle('menu-open');
         }
     });
 }
 
-function generateMenu(menu: Array<MenuItem>):string {
+function generateMenu(menu:Array<MenuItem>):string {
     let result:string = "";
-    menu.map((menuItem)=>{
-        if(Array.isArray(menuItem.items)) {
+    menu.map((menuItem) => {
+        if ("items" in menuItem) {
             let subMenu:string = "";
             subMenu += generateMenu(menuItem.items);
             result += `<li><a href="javascript:void(0);" class="title">${menuItem.title}</a>${subMenu}</li>`;
