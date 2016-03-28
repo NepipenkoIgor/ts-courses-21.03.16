@@ -26,6 +26,7 @@ var pt = { x: 4, y: 5 };
 pt.x = 5; // не может поменять свойство
 /**Function**/
 function fooF(config) {
+    var bar = config.bar;
     config.bar = 45;
 }
 var config = { bar: 123, bas: 123 };

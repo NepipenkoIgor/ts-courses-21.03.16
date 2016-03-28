@@ -43,6 +43,7 @@ let menu: bigList = [
 
 
 function generateMenu(list: bigList):string{
+  /** почему убрал?*/
   //let str = `<ul>`;
   let str = '';
   for (let menu of list) {
@@ -55,7 +56,7 @@ function generateMenu(list: bigList):string{
         str += generateMenu([item])
       }
     }
-    str += `</li></ul>`
+    str += `</li></ul>`;
 
   }
   //str += `</ul>`;
