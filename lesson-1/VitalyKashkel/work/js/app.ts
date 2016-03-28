@@ -1,65 +1,80 @@
 interface MenuItem {
-	title: string;
-	items?: MenuItem[];
+    title: string;
+    items?: MenuItem[];
 }
 
 let menu: MenuItem[] = [
-	{ title: 'Животные', items: [
-		{ title: 'Млекопитающие', items: [
-			{title: 'Коровы'},
-			{title: 'Ослы'},
-			{title: 'Собаки', items: [
-				{title: "Таксы"},
-				{title: "Овчарки"}
-			]},
-			{title: 'Тигры'}
-		]	},
-		{ title: 'Другие', items: [
-			{title: 'Змеи'},
-			{title: 'Птицы'},
-			{title: 'Ящерицы'},
-		]},
-	]},
-	{ title: 'Рыбы', items: [
-		{	title: 'Аквариумные', items: [
-			{title: 'Гуппи'},
-			{title: 'Скалярии'}
-		]	},
-		{ title: 'Форель', items: [
-			{title: 'Морская форель'}
-		]	},
-	]}
+    {
+        title: 'Животные', items: [
+        {
+            title: 'Млекопитающие', items: [
+            {title: 'Коровы'},
+            {title: 'Ослы'},
+            {
+                title: 'Собаки', items: [
+                {title: 'Таксы'},
+                {title: 'Овчарки'}
+            ]
+            },
+            {title: 'Тигры'}
+        ]
+        },
+        {
+            title: 'Другие', items: [
+            {title: 'Змеи'},
+            {title: 'Птицы'},
+            {title: 'Ящерицы'},
+        ]
+        },
+    ]
+    },
+    {
+        title: 'Рыбы', items: [
+        {
+            title: 'Аквариумные', items: [
+            {title: 'Гуппи'},
+            {title: 'Скалярии'}
+        ]
+        },
+        {
+            title: 'Форель', items: [
+            {title: 'Морская форель'}
+        ]
+        },
+    ]
+    }
 ];
 
 
 function generateMenu(menu: MenuItem[]): string {
-	let menuTree = `<ul>`;
-	for (let branch of menu) {
-		menuTree += ("items" in branch) ? `<li><a class="title">${branch.title}</a>` : `<li><a>${branch.title}</a></li>`;
-		if ("items" in branch) {
-			let subMenu: MenuItem[] = branch.items;
-			menuTree += generateMenu(subMenu);
-			menuTree += `</li>`;
-		}
-	}
-	menuTree += `</ul>`;
+    let menuTree = `<ul>`;
+    for (let branch of menu) {
+        menuTree += ('items' in branch) ? `<li><a class="title">${branch.title}</a>` : `<li><a>${branch.title}</a></li>`;
+        if ('items' in branch) {
+            let subMenu: MenuItem[] = branch.items;
+            menuTree += generateMenu(subMenu);
+            menuTree += `</li>`;
+        }
+    }
+    menuTree += `</ul>`;
 
-	return menuTree;
+    return menuTree;
 }
 
 function createMenu(): void {
-	let navMenuElement: HTMLElement = <HTMLElement>document.querySelector("nav");
-	navMenuElement.innerHTML = generateMenu(menu);
-	console.log(generateMenu(menu));
-	navMenuElement.onclick = (ev: MouseEvent)=> {
-		let el = ev.target as HTMLElement;
-		let classList = el.classList;
-		if (classList.contains('title')) {
-			let parentLi = <HTMLElement>el.parentNode;
-			parentLi.classList.toggle("menu-open");
-		}
-	};
-	
+    /** лучше использовать класс как селектор*/
+    let navMenuElement: HTMLElement = <HTMLElement>document.querySelector('nav');
+    navMenuElement.innerHTML = generateMenu(menu);
+    console.log(generateMenu(menu));
+    navMenuElement.onclick = (ev: MouseEvent) => {
+        let el = ev.target as HTMLElement;
+        let classList = el.classList;
+        if (classList.contains('title')) {
+            let parentLi = <HTMLElement>el.parentNode;
+            parentLi.classList.toggle('menu-open');
+        }
+    };
+
 }
 
-document.addEventListener("DOMContentLoaded", createMenu);
+document.addEventListener('DOMContentLoaded', createMenu);
