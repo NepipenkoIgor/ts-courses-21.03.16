@@ -118,3 +118,54 @@ buttonClose.onclick = function close() {
 buttonToggle.onclick = function toggle() {
   menu.toggle('Животные');
 };
+
+type ElementCoordinates = {top:number, left:number}
+
+class Slider {
+
+  protected element:HTMLElement;
+  protected thumb:HTMLElement;
+  protected sliderCoords:ElementCoordinates;
+  protected thumbCoords:ElementCoordinates;
+  protected shiftX:number;
+
+  constructor(element:string) {
+    this.element = document.getElementById(element) as HTMLElement;
+    this.thumb = this.element.children[0] as HTMLElement;
+    this.thumb.addEventListener('mousedown', this.mouseDown);
+  }
+
+  protected mouseDown(event:MouseEvent):void {
+    console.log (this); //?????
+    this.sliderCoords = this.getCoordinate(this.element);
+    this.thumbCoords = this.getCoordinate(this.thumb);
+    this.shiftX = event.pageX - this.thumbCoords.left;
+    this.thumb.addEventListener('mousemove', this.moouseMove);
+  }
+
+  protected moouseMove(event:MouseEvent):void {
+    let newLeft = event.pageX - this.shiftX - this.sliderCoords.left;
+    if (newLeft < 0) {
+      newLeft = 0;
+    }
+    let rightEdge = this.element.offsetWidth - thumb.offsetWidth;
+    if (newLeft > rightEdge) {
+      newLeft = rightEdge;
+    }
+    thumb.style.left = newLeft + 'px';
+  }
+
+  protected getCoordinate(element:HTMLElement):ElementCoordinates {
+    var box = element.getBoundingClientRect();
+    return {
+      top: box.top + pageYOffset,
+      left: box.left + pageXOffset
+    };
+
+  }
+}
+let slider = document.getElementById('slider') as HTMLElement;
+let thumb = slider.children[0] as HTMLElement;
+let sl = new Slider('slider');
+//console.log(sl.getCoordinate(thumb));
+//console.log(sl.getCoordinate(slider));
