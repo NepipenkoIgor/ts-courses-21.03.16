@@ -47,10 +47,22 @@ class Menu {
     }
   }
 
-  public openHandler(element:string):string {
-    let el:HTMLElement = this.findElByContent(element) as HTMLElement;
-    el.className = 'menu-open';
-    return ''
+  public open(content:string):void {
+    let el:HTMLElement = this.findElByContent(content) as HTMLElement;
+    let parentLi = el.parentNode as HTMLElement;
+    parentLi.classList.add('menu-open');
+  }
+
+  public close(content:string):void {
+    let el:HTMLElement = this.findElByContent(content) as HTMLElement;
+    let parentLi = el.parentNode as HTMLElement;
+    parentLi.classList.remove('menu-open');
+  }
+
+  public toggle(content:string):void {
+    let el:HTMLElement = this.findElByContent(content) as HTMLElement;
+    let parentLi = el.parentNode as HTMLElement;
+    parentLi.classList.toggle('menu-open');
   }
 }
 
@@ -93,13 +105,16 @@ const menuList:menuType = [
 
 let menu = new Menu('.menu', menuList);
 
-//Testing Find Element
-setTimeout(function(){
-  console.log (menu.findElByContent('Животные'));
-},100);
+let buttonOpen = document.querySelector('.button-open') as HTMLButtonElement;
+let buttonClose = document.querySelector('.button-close') as HTMLButtonElement;
+let buttonToggle = document.querySelector('.button-toggle') as HTMLButtonElement;
 
-let el = document.querySelector('.button-open') as HTMLButtonElement;
-console.log (el);
-el.onclick = function bla() {
-  console.log ('aaa');
-}
+buttonOpen.onclick = function open() {
+  menu.open('Животные');
+};
+buttonClose.onclick = function close() {
+  menu.close('Животные');
+};
+buttonToggle.onclick = function toggle() {
+  menu.toggle('Животные');
+};
