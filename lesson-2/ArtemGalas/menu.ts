@@ -47,8 +47,9 @@ class Menu {
     }
   }
 
-  public openHandler(element:HTMLElement):string {
-
+  public openHandler(element:string):string {
+    let el:HTMLElement = this.findElByContent(element) as HTMLElement;
+    el.className = 'menu-open';
     return ''
   }
 }
@@ -96,3 +97,9 @@ let menu = new Menu('.menu', menuList);
 setTimeout(function(){
   console.log (menu.findElByContent('Животные'));
 },100);
+
+let el = document.querySelector('.button-open') as HTMLButtonElement;
+console.log (el);
+el.onclick = function bla() {
+  console.log ('aaa');
+}
