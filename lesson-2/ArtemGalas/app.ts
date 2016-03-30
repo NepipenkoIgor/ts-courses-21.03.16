@@ -18,7 +18,6 @@ function sumator(...numbers:(string|number)[]):number {
   let count:number = 0;
   for (let i in numbers) {
     let num = numbers[i];
-    //count += (typeof num == 'string') ? parseInt(num) : num; //TypeScripту мало == получается, так как в этой строке ошибка
     count += (typeof num === 'string') ? parseInt(num) : num;
   }
   return count
@@ -36,6 +35,7 @@ let getUnique = (...numbers:number[]):number[] => {
 };
 console.log(getUnique(1, 4, 3, 2, 4, 3));
 
+//Работает только для одного слова, и у меня проблема со спец символаит
 function reverse(string:string):string {
   let returnStr:string = '';
   let a = string.match(/[\d\$\%]/g); //создаем масив из чисел и специальных символов
@@ -60,4 +60,4 @@ function reverse(string:string):string {
   }
   return returnStr;
 }
-console.log(reverse('s1ta8r3t')); // -> 1metr3A
+console.log(reverse('s1ta8r3t'));
