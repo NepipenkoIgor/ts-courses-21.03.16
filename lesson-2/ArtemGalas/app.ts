@@ -34,5 +34,30 @@ let getUnique = (...numbers:number[]):number[] => {
   }
   return returnedArray;
 };
-
 console.log(getUnique(1, 4, 3, 2, 4, 3));
+
+function reverse(string:string):string {
+  let returnStr:string = '';
+  let a = string.match(/[\d\$\%]/g); //создаем масив из чисел и специальных символов
+  let index:number[] = [];
+
+  console.log ('mas= ',a);
+
+  //создаем масив из индексов чисел, которые есть в массиве
+  for(let i in a) {
+   index.push(string.indexOf(a[i]));
+  }
+  //Переворачиваем всю строку
+  for (let i = string.length-1; i >= 0; i--) {
+    returnStr += string[i];
+  }
+  //Удаляем все числа из строки
+  returnStr = returnStr.replace(/\d/g, '');
+
+  //Вставляем числа в строку по соответсвуюущему индексу
+  for (let i in index) {
+    returnStr = returnStr.slice(0, index[i]) + a[i] + returnStr.slice(index[i]);
+  }
+  return returnStr;
+}
+console.log(reverse('s1ta8r3t')); // -> 1metr3A
