@@ -33,6 +33,24 @@ class Menu {
       parentLi.classList.toggle('menu-open');
     }
   }
+
+  public findElByContent(textContent:string):HTMLElement|string {
+    let elements = document.querySelectorAll('a.title');
+    for (let i in elements) {
+      let element = elements[i] as HTMLElement;
+      if (element.textContent === textContent) {
+        return element
+      }
+      else {
+        return `Don't find anything`
+      }
+    }
+  }
+
+  public openHandler(element:HTMLElement):string {
+
+    return ''
+  }
 }
 
 const menuList:menuType = [
@@ -73,3 +91,8 @@ const menuList:menuType = [
 ];
 
 let menu = new Menu('.menu', menuList);
+
+//Testing Find Element
+setTimeout(function(){
+  console.log (menu.findElByContent('Животные'));
+},100);
