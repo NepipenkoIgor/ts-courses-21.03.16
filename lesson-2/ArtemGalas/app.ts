@@ -42,7 +42,7 @@ function sumator(...numbers:(string|number)[]):number {
     }
     return count
 }
-console.log('sumator =', sumator('3', 4, '6', 7, 8, 9));
+console.log('sumator =', sumator('2', 4, '6', 7, 8, 9));
 
 /**
  3)
@@ -53,7 +53,7 @@ console.log('sumator =', sumator('3', 4, '6', 7, 8, 9));
  Специально обрабатывать значение NaN не обязательно. */
 
 /**
- * почуму бы не использовать ЕS6 цикл?
+ * почему бы не использовать ЕS6 цикл?
  * */
 
 let getUnique = (...numbers:number[]):number[] => {

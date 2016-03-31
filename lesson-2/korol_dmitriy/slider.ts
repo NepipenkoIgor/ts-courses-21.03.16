@@ -1,7 +1,7 @@
 class Slider {
     sliderElem:HTMLElement;
     thumbElem:HTMLElement;
-
+    /**зачем? ни какого сохранения контекста? self!!!!**/
     constructor(elementId:string) {
         let _self = this;
 
@@ -26,7 +26,7 @@ class Slider {
         return {top, left} = elem.getBoundingClientRect();
     }
 
-    protected _mouseMove(event:MouseEvent){
+    protected _mouseMove(event:MouseEvent) {
         let _self = this;
 
         let thumbCoords = _self._getCoords(_self.thumbElem);
