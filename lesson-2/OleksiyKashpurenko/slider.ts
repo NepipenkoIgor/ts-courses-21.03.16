@@ -1,5 +1,7 @@
 type Coords = {top:number, left:number};
 
+
+/***хотелось бы увидеть несколько методов*/
 class Slider {
 
   protected sliderElem:HTMLElement;

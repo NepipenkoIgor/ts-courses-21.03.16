@@ -1,5 +1,8 @@
 type menuType = {title: string, items?: menuType}[];
 
+
+/*** Хотелось бы увидеть интерфейс или абстрактный класс**/
+
 class Menu {
   protected element:string;
   protected menu:menuType;
@@ -135,6 +138,8 @@ class Slider {
     this.thumb.addEventListener('mousedown', this.mouseDown);
   }
 
+  /**!!! мы же говорили об этом на занятии !!! метод и свойство!!!!****/
+  
   protected mouseDown = (event:MouseEvent):void => {
     this.sliderCoords = this.getCoordinate(this.element);
     this.thumbCoords = this.getCoordinate(this.thumb);
@@ -160,6 +165,7 @@ class Slider {
     document.removeEventListener('mouseup', this.mouseUp);
   };
 
+  /**уходим от var**/
   protected getCoordinate(element:HTMLElement):ElementCoordinates {
     var box = element.getBoundingClientRect();
     return {

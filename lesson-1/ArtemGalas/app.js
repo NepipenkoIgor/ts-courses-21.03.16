@@ -37,10 +37,10 @@ var menuList = [
 function generateMenu(list) {
     var template = "<ul>";
     for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
-        var menu = list_1[_i];
-        template += "<li><a class=\"title\">" + menu.title + "</a>";
-        if (menu.items) {
-            template += generateMenu(menu.items);
+        var menu_1 = list_1[_i];
+        template += "<li><a class=\"title\">" + menu_1.title + "</a>";
+        if (menu_1.items) {
+            template += generateMenu(menu_1.items);
         }
         template += "</li>";
     }

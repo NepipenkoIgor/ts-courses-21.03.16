@@ -66,4 +66,3 @@ navMenuList.onclick = function (e) {
         parentLi.classList.toggle('menu-open');
     }
 };
-//# sourceMappingURL=menu.js.map

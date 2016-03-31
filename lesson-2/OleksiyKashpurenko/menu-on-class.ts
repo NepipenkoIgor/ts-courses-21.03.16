@@ -47,6 +47,8 @@ let listOfMenu: Array<menuItem> = [
   }
 ];
 
+/***почему не описать интерфейс?*/
+
 class MenuComponent {
   public targetElem: HTMLElement = null;
 

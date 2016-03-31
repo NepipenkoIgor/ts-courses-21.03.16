@@ -25,8 +25,8 @@ var menuList = [
 function generateMenu(list) {
     var str = '';
     for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
-        var menu = list_1[_i];
-        str += generateItem(menu);
+        var menu_1 = list_1[_i];
+        str += generateItem(menu_1);
     }
     return "<ul>" + str + "</ul>";
 }
