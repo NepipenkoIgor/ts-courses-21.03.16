@@ -129,31 +129,36 @@ class Slider {
   protected thumbCoords:ElementCoordinates;
   protected shiftX:number;
 
-  constructor(element:string) {
-    this.element = document.getElementById(element) as HTMLElement;
+  constructor(element:HTMLElement) {
+    this.element = element as HTMLElement;
     this.thumb = this.element.children[0] as HTMLElement;
     this.thumb.addEventListener('mousedown', this.mouseDown);
   }
 
-  protected mouseDown(event:MouseEvent):void {
-    console.log (this); //?????
+  protected mouseDown = (event:MouseEvent):void => {
     this.sliderCoords = this.getCoordinate(this.element);
     this.thumbCoords = this.getCoordinate(this.thumb);
     this.shiftX = event.pageX - this.thumbCoords.left;
-    this.thumb.addEventListener('mousemove', this.moouseMove);
-  }
+    document.addEventListener('mousemove', this.mouseMove);
+    document.addEventListener('mouseup', this.mouseUp);
+  };
 
-  protected moouseMove(event:MouseEvent):void {
+  protected mouseMove = (event:MouseEvent):void => {
     let newLeft = event.pageX - this.shiftX - this.sliderCoords.left;
     if (newLeft < 0) {
       newLeft = 0;
     }
-    let rightEdge = this.element.offsetWidth - thumb.offsetWidth;
+    let rightEdge = this.element.offsetWidth - this.thumb.offsetWidth;
     if (newLeft > rightEdge) {
       newLeft = rightEdge;
     }
-    thumb.style.left = newLeft + 'px';
-  }
+    this.thumb.style.left = newLeft + 'px';
+  };
+
+  protected mouseUp = ():void => {
+    document.removeEventListener('mousemove', this.mouseMove);
+    document.removeEventListener('mouseup', this.mouseUp);
+  };
 
   protected getCoordinate(element:HTMLElement):ElementCoordinates {
     var box = element.getBoundingClientRect();
@@ -161,11 +166,7 @@ class Slider {
       top: box.top + pageYOffset,
       left: box.left + pageXOffset
     };
-
   }
 }
 let slider = document.getElementById('slider') as HTMLElement;
-let thumb = slider.children[0] as HTMLElement;
-let sl = new Slider('slider');
-//console.log(sl.getCoordinate(thumb));
-//console.log(sl.getCoordinate(slider));
+let sl = new Slider(slider);
