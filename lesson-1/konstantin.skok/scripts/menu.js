@@ -35,6 +35,7 @@ var menu = [
     }
 ];
 function generateMenu(list) {
+    /** почему убрал?*/
     //let str = `<ul>`;
     var str = '';
     for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
