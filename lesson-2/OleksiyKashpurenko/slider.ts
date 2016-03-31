@@ -6,7 +6,7 @@ class Slider {
   protected thumbElem:HTMLElement;
 
   private getCoords = function(elem: HTMLElement):Coords { // кроме IE8-
-    var box = elem.getBoundingClientRect();
+    let box:ClientRect = elem.getBoundingClientRect();
 
     return {
       top: box.top + pageYOffset,
