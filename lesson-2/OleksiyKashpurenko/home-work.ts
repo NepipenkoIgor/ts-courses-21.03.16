@@ -3,6 +3,7 @@
 //   Возвращает true, если все аргументы, кроме первого входят в первый.
 //   Первым всегда должен быть массив.
 
+/**Почему только строки ?? */
 let isInArray = (b:string[], ...a:string[]):boolean => {
   let count:number = a.length;
   for (let i = 0; i < count; i++) {
@@ -17,6 +18,8 @@ console.log('function isInArray return: ', isInArray(['1','2','3'],'1','2','1','
 // 2)
 // писать функцию summator(), которая сумирует переданые ей аргументы.
 // Аргументы могут быть либо строкового либо числового типа. Количество их не ограничено
+
+/**как же isNaN*/
 type S = number|string;
 let summator = (...source:S[]):number => {
   let sum:number = 0;
@@ -42,6 +45,10 @@ console.log('summator("1.1", "2", 3) => ' + summator('1.1', '2', 3).toString());
 //   Специально обрабатывать значение NaN не обязательно.
 function getUnique<T>(...source:T[]):Array<T> {
   let result:T[] = [];
+
+  /**
+   * почему in а не оf???
+   * */
 
   for(let i in source ) {
     if(result.indexOf(source[i])==-1) {

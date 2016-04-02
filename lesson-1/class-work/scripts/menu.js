@@ -5,10 +5,10 @@ var menuList = [
 function generateMenu(list) {
     var str = "<ul>";
     for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
-        var menu = list_1[_i];
-        str += "<li><a class=\"title\">" + menu.title + "</a>";
+        var menu_1 = list_1[_i];
+        str += "<li><a class=\"title\">" + menu_1.title + "</a>";
         str += "<ul>";
-        for (var _a = 0, _b = menu.items; _a < _b.length; _a++) {
+        for (var _a = 0, _b = menu_1.items; _a < _b.length; _a++) {
             var item = _b[_a];
             str += "<li><a>" + item + "</a></li>";
         }

@@ -1,4 +1,5 @@
 /* start Task 1 */
+/** Может примитивами ограничить?*/
 function isInArray(arr:any[], ...arg:any[]):boolean {
     let result = true;
 
@@ -19,8 +20,9 @@ console.log(isInArray(["true", false, 4], 4, false, undefined, "true"));
 console.log(isInArray([2, 4, 6, 8], 2, 4, 8));
 
 
-
 /* Task2 */
+
+/** isNaN ?*/
 function summator(...arg:string[]):string;
 function summator(...arg:number[]):number;
 function summator(...arg:any[]):any {
@@ -35,6 +37,8 @@ console.log(summator("5", "5", "5", " ", "5", " 5"));
 
 
 /* Task3 */
+
+/**почему не сделать логику так что бы использовать  ES6 for...of*/
 function getUnique(...args:any[]):any[] {
     var newArr:any[] = [];
     for (let i = 0; i < args.length; i++) {
@@ -44,7 +48,7 @@ function getUnique(...args:any[]):any[] {
     }
     return newArr;
 }
-
+/** ограничить бы по примитивам*/
 function getUnique2(...args:any[]):any[] {
     return args.reduce((a, b) => {
         return a.indexOf(b) === -1 ? a.concat([b]) : a;
@@ -61,7 +65,6 @@ console.log(getUnique(1, [1, 2, 3], 2, [1, 2, 3]));
 console.log(getUnique2(1, [1, 2, 3], 2, [1, 2, 3]));
 
 
-
 /* Task4 */
 function changeOrder(str:string):string {
     let wordArr = str.split(' ');
@@ -70,8 +73,11 @@ function changeOrder(str:string):string {
         let alphabeticCharArr = [];
 
         //grab characters
-        let grabChar = (item) => { alphabeticCharArr.push(item); return ' ';};
-        charArr = charArr.map((item) => /[a-zA-Z]/.test(item) ? grabChar(item) : item );
+        let grabChar = (item) => {
+            alphabeticCharArr.push(item);
+            return ' ';
+        };
+        charArr = charArr.map((item) => /[a-zA-Z]/.test(item) ? grabChar(item) : item);
 
         //insert character in reverse order
         charArr = charArr.map((ch) => ch == ' ' ? alphabeticCharArr.pop() : ch);

@@ -48,7 +48,6 @@ let menuArr:MenuItem[] = [
 ];
 
 
-
 interface MenuItem {
     title:string,
     items?:MenuItem[]
@@ -143,10 +142,20 @@ let menu = new Menu("main-menu", menuArr);
 
 console.log(menu.getElem());
 
-setTimeout(()=> { menu.toggle('Рыбы'); }, 1200);
-setTimeout(()=> { menu.toggle('Форель'); }, 2000);
+setTimeout(()=> {
+    menu.toggle('Рыбы');
+}, 1200);
+setTimeout(()=> {
+    menu.toggle('Форель');
+}, 2000);
 
-setTimeout(()=> { menu.open('Млекопитающие'); }, 1200);
-setTimeout(()=> { menu.open('Животные'); }, 700);
+setTimeout(()=> {
+    menu.open('Млекопитающие');
+}, 1200);
+setTimeout(()=> {
+    menu.open('Животные');
+}, 700);
 
-setTimeout(()=> { menu.close('Рыбы'); }, 3000);
+setTimeout(()=> {
+    menu.close('Рыбы');
+}, 3000);
