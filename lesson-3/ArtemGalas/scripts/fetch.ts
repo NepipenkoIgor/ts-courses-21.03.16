@@ -4,6 +4,10 @@
  */
 
 /// <reference path="fetch.d.ts" />
+/// <reference path="../typings/tsd.d.ts"/>
+
+import _ = require('lodash')
+
 type opt={
     elem:HTMLElement;
     uri:string;
@@ -35,6 +39,10 @@ export class FlickrApp {
 
     protected render(body:any):void {
         this.photos = body.photos.photo;
+        console.log ('Before sortable',this.photos);
+        this.photos = _.sortBy(body.photos.phot, ['title']);
+        console.log ('After Sortable',this.photos);
+
         let content = '';
         for (let photo of this.photos) {
             content += `<div  class='image-box'>
