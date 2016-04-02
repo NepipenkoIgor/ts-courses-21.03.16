@@ -1,0 +1,19 @@
+{
+  "name": "lesson2",
+  "version": "1.0.0",
+  "description": "1. Написать функцию isInArray(), которая начиная со второго принимает переменное количество аргументов.   Возвращает true, если все аргументы, кроме первого входят в первый.   Первым всегда должен быть массив.",
+  "main": "isInArray.js",
+  "dependencies": {
+    "typescript": "^1.8.9"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "pretest": "tsc test/*Test.ts",
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
