@@ -5,8 +5,9 @@
  * @returns {boolean} - будет возвращено true только если ВСЕ аргументы находятся в массиве target, если хотя бы один отсутствует, то false
  */
 
-/**generic ???*/
-let isInArray = (target:(number|string|boolean)[], ...args:(number|string|boolean)[]):boolean => {
+/* (number|string|boolean) */
+type myT = number | string | boolean;
+let isInArray = (target: myT[], ...args: myT[]): boolean => {
     for (let arg of args) {
         if (target.indexOf(arg) === -1) {
             return false;
@@ -19,20 +20,18 @@ console.log(isInArray(["1", "5", 30, "word", false], "1", 30, true));
 console.log(isInArray(["1", "5", 30, "word", false], false, "1"));
 
 /* Задание 2 */
-
-/**isNaN????*/
 let summator = (...args:(number|string)[]):string => {
     let sum = 0;
     for (let arg of args) {
-        sum += (typeof arg === "string") ? parseInt(arg) : arg;
+        sum += (typeof arg === "string") ? ((isNaN(parseFloat(arg)) ? 0 : parseFloat(arg))) : arg;
     }
     return `Сумма введенных аргументов = ${sum}`;
 }
 
-console.log(summator(10, 5, "20"));
+console.log(summator(10, 5, "20", "dddwd"));
 
 /* Задание 3 */
-let getUnique = (...args:(number|string|boolean)[]):(number|string|boolean)[] => {
+let getUnique = (...args: myT[]): myT[] => {
     let result:(number|string|boolean)[] = [];
     for (let arg of args) {
         if (result.indexOf(arg) === -1) {
@@ -49,7 +48,7 @@ class ConvertibleStr {
     constructor(private str:string) {
     }
 
-    private convertPart(part:string):string {
+    private convertPart(part: string): string {
         let partLength = part.length;
         let reg:RegExp = /[a-zа-я]/i;
         let partLetters:string[] = part.match(/[a-zа-я]*/gi).join("").split("");

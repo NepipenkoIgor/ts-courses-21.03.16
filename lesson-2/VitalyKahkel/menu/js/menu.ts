@@ -46,9 +46,15 @@ let menu:MenuItem[] = [
     }
 ];
 
-/***почему бы не описать интерфейсом?*/
+interface myMenu {
+	createMenu(): void;
+	getElem(): HTMLElement;
+	open(): void;
+	close(): void;
+	toggle(): void;
+}
 
-class Menu {
+class Menu implements myMenu {
     constructor(private mainMenu:MenuItem[]) {
     }
 
