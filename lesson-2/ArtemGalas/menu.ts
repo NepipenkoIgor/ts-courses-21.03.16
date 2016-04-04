@@ -1,9 +1,15 @@
 type menuType = {title: string, items?: menuType}[];
 
 
-/*** Хотелось бы увидеть интерфейс или абстрактный класс**/
+/*** Хотелось бы увидеть интерфейс или абстрактный класс -> готово **/
 
-class Menu {
+interface IMenu {
+  open(content:string):void;
+  toggle(content:string):void;
+  close(content:string):void;
+}
+
+class Menu implements IMenu {
   protected element:string;
   protected menu:menuType;
 
@@ -135,20 +141,20 @@ class Slider {
   constructor(element:HTMLElement) {
     this.element = element as HTMLElement;
     this.thumb = this.element.children[0] as HTMLElement;
-    this.thumb.addEventListener('mousedown', this.mouseDown);
+    this.thumb.addEventListener('mousedown', this.mouseDown.bind(this)); // Поменял на bind
   }
 
-  /**!!! мы же говорили об этом на занятии !!! метод и свойство!!!!****/
+  /**!!! мы же говорили об этом на занятии !!! метод и свойство!!!! -> Готово ****/
   
-  protected mouseDown = (event:MouseEvent):void => {
+  protected mouseDown(event:MouseEvent):void {
     this.sliderCoords = this.getCoordinate(this.element);
     this.thumbCoords = this.getCoordinate(this.thumb);
     this.shiftX = event.pageX - this.thumbCoords.left;
-    document.addEventListener('mousemove', this.mouseMove);
-    document.addEventListener('mouseup', this.mouseUp);
+    document.addEventListener('mousemove', this.mouseMove.bind(this));
+    document.addEventListener('mouseup', this.mouseUp.bind(this));
   };
 
-  protected mouseMove = (event:MouseEvent):void => {
+  protected mouseMove(event:MouseEvent):void {
     let newLeft = event.pageX - this.shiftX - this.sliderCoords.left;
     if (newLeft < 0) {
       newLeft = 0;
@@ -160,14 +166,14 @@ class Slider {
     this.thumb.style.left = newLeft + 'px';
   };
 
-  protected mouseUp = ():void => {
+  protected mouseUp():void {
     document.removeEventListener('mousemove', this.mouseMove);
     document.removeEventListener('mouseup', this.mouseUp);
   };
 
-  /**уходим от var**/
+  /**уходим от var -> сложно забыть про него -> Готово **/
   protected getCoordinate(element:HTMLElement):ElementCoordinates {
-    var box = element.getBoundingClientRect();
+    let box = element.getBoundingClientRect();
     return {
       top: box.top + pageYOffset,
       left: box.left + pageXOffset

@@ -9,6 +9,7 @@
  * 1) нужно бы было использовать generic, почему только с числами?
  * 2) немного переделать логику if в if тяжело читать (плохая практика)
  * */
+type typeF = string|number|boolean;
 
 function isInArray(target:number[], ...args:number[]):boolean {
     for (let i = 0; i < args.length; i++) {
@@ -17,9 +18,7 @@ function isInArray(target:number[], ...args:number[]):boolean {
                 return true
             }
         }
-        else {
-            return false
-        }
+        else {return false}
     }
 }
 console.log('isInArray = ', isInArray([1, 2], 2, 1));
@@ -53,14 +52,14 @@ console.log('sumator =', sumator('2', 4, '6', 7, 8, 9));
  Специально обрабатывать значение NaN не обязательно. */
 
 /**
- * почему бы не использовать ЕS6 цикл?
+ * почему бы не использовать ЕS6 цикл? -> Готово
  * */
 
 let getUnique = (...numbers:number[]):number[] => {
     let returnedArray:number[] = [];
-    for (let i = 0; i < numbers.length; i++) {
-        if (returnedArray.indexOf(numbers[i]) === -1) {
-            returnedArray.push(numbers[i]);
+    for (let number of numbers) {
+        if (returnedArray.indexOf(number) === -1) {
+            returnedArray.push(number);
         }
     }
     return returnedArray;
