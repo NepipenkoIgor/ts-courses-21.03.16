@@ -39,7 +39,7 @@ export default class MenuList implements IMenuList {
                 let child: IMenuList = new MenuList(this.elem, menuItem.items);
                 this.elem.appendChild(child.getElem());
 
-                this.elem.addEventListener('onclick', toggle().bind(this.elem))
+                this.elem.addEventListener('onclick', this.toggle.bind(this.elem))
             }
         }
         
