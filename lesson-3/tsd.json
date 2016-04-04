@@ -10,6 +10,9 @@
     },
     "react/react.d.ts": {
       "commit": "e937b3e64af586d19f2ea29fdf771e9dc4feecc8"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "d969b903d1fce89a5e43828ec68458b4f852db4d"
     }
   }
 }

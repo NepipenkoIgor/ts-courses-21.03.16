@@ -10,6 +10,8 @@ type opt={
     queryMethod:string;
     apiKey:string
 }
+
+
 export class FlickrApp {
     protected elem:HTMLElement;
     protected input:HTMLInputElement;
