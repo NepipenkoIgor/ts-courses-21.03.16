@@ -83,6 +83,9 @@ class Slider {
         }
 
     }
+
+		
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {
