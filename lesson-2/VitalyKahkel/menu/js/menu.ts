@@ -47,11 +47,11 @@ let menu:MenuItem[] = [
 ];
 
 interface myMenu {
-	createMenu(): void;
-	getElem(): HTMLElement;
-	open(): void;
-	close(): void;
-	toggle(): void;
+    createMenu():void;
+    getElem():HTMLElement;
+    open():void;
+    close():void;
+    toggle():void;
 }
 
 class Menu implements myMenu {

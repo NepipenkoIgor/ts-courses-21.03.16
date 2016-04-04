@@ -32,7 +32,8 @@ class Slider {
         };
         return boxCoord;
     }
- /** разбить на методы если возможно**/
+
+    /** разбить на методы если возможно**/
     create():void {
         let sliderElem:HTMLElement = <HTMLElement>document.querySelector("#slider");
         let sliderWidth:number = sliderElem.offsetWidth;
@@ -83,9 +84,6 @@ class Slider {
         }
 
     }
-
-		
-
 }
 
 document.addEventListener('DOMContentLoaded', function () {
